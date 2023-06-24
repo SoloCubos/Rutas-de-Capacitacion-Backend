@@ -14,6 +14,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,24 +26,25 @@ import lombok.Setter;
 @Audited
 @Table(name = "empresa")
 @Entity
+@Builder
 public class Empresa extends BaseEntity{
 
-    @Column(name = "nit", nullable = false)    
-    private Integer nit;
+    @Column(name = "nit", length = 10)    
+    private String nit;
 
-    @Column(name = "razon_social", nullable = false)
-    private String razonSocial;
+    @Column(name = "razon_social")
+    private String razon_social;
 
-    @Column(name = "direccion", nullable = false)
+    @Column(name = "direccion")
     private String direccion;
 
-    @Column(name = "telefono", nullable = false, length = 10)
+    @Column(name = "telefono", length = 10)
     private String telefono;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Capacitacion.class, cascade = CascadeType.PERSIST)

@@ -17,5 +17,4 @@ public class EmpresaServiceImpl extends BaseServiceImpl<Empresa, Integer> implem
     public EmpresaServiceImpl(BaseRepository<Empresa, Integer> baseRepository) {
         super(baseRepository);
     }
-
 }

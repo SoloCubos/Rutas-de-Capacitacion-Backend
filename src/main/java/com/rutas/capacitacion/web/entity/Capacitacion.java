@@ -21,15 +21,15 @@ import lombok.Setter;
 @Table(name = "capacitacion")
 public class Capacitacion extends BaseEntity{
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "descripcion", nullable = false)
+    @Column(name = "descripcion", length = 2000)
     private String descripcion;
 
     @Enumerated(EnumType.STRING)
     private ProgresoEnum progreso;
 
-    @Column(name = "resultado", nullable = false)
+    @Column(name = "resultado")
     private String resultado;
 }
