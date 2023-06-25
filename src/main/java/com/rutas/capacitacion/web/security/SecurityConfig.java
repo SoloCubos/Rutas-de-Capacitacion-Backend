@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.rutas.capacitacion.web.security.filters.JwtAuthenticationFilter;
 import com.rutas.capacitacion.web.security.filters.JwtAuthorizationFilter;
@@ -51,6 +52,10 @@ public class SecurityConfig {
                 })
                 .addFilter(jwtAuthenticationFilter)
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout(logout ->{
+                    logout.logoutRequestMatcher(new AntPathRequestMatcher("/api/v1/empresas/logout"));
+                    logout.invalidateHttpSession(true);
+                })
                 .build();
     }
 
